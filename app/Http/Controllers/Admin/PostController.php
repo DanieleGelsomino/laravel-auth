@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Post;
 
 class PostController extends Controller
@@ -109,6 +110,14 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'title'=> 'required|max:255',
+            'content'=> 'required'
+        ]);
+        $post = Post::findOrFail($id);
+        $data = $request->all();
+        $post->update($data);
+        return redirect()->route('admin.posts.show', $post->id);
 
     }
 
@@ -121,7 +130,9 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::findOrFail($id);
         $post->delete();
-        return reedirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index');
     }
+
 }

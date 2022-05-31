@@ -26,7 +26,7 @@
                         <td><a class="btn btn-info" href="{{ route('admin.posts.edit', $post) }}">EDIT</a></td>
                         <td>
                             <form onsubmit="return confirm('Vuoi eliminare il post {{ $post->title }}?')"
-                                action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                                action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">DELETE</button>
