@@ -37,5 +37,8 @@
 
             </tbody>
         </table>
+        <div>
+            <a class="btn btn-success" href="{{ route('admin.posts.create') }}">CREA POST</a>
+        </div>
     </div>
 @endsection

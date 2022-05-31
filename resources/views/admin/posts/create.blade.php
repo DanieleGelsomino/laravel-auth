@@ -41,6 +41,7 @@
 
             <button type="submit" class="btn btn-success">CREA</button>
             <button type="reset" class="btn btn-secondary">RESET</button>
+            <a class="btn btn-dark" href="{{ route('admin.posts.index') }}">BACK</a>
         </form>
 
     </div>
