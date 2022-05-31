@@ -19,7 +19,8 @@ Route::get('/', function () {
 });
 */
 
-Auth::routes();
+// rotta autenticazione gestita automaticamente da laravel
+Auth::routes(['register'=>false, 'reset'=>false, 'verify'=>false]);
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
@@ -28,8 +29,8 @@ Route::middleware('auth')
 ->name('admin.')
 ->prefix('admin')
 ->group(function () {
-    Route::get('/', 'HomeController@index')
-    ->name('home');
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::resource('/posts', 'PostController');
 });
 
 
